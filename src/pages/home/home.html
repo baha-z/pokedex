@@ -1,14 +1,56 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar color="danger">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pokédex</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
+
+  <h3>Search Pokemon by Name</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar
+          [(ngModel)]="myInput"
+          [showCancelButton]="shouldShowCancel"
+          (ionInput)="searchPokemon($event)">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+  <ion-grid>
+    <ion-row *ngFor="let pokemon of pokemons">
+      <ion-col col-12>
+          <img class="profile" src= '{{pokemon.sprites.front_default}}' alt="">
+      </ion-col>
+      <ion-col>
+         <p>Name</p>
+         {{ pokemon.name }}
+      </ion-col>
+      <ion-col>
+        <p>Type</p>
+        {{ pokemon.types[0].type.name }}
+     </ion-col>
+     <ion-col>
+        <p>Height</p>
+        {{ pokemon.height }}
+     </ion-col>
+     <ion-col>
+        <p>Weight</p>
+        {{ pokemon.weight }}
+     </ion-col>
+    </ion-row>
+      
+  </ion-grid>
+
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
+    <button ion-button color="primary" menuToggle>Menu</button>
   </p>
+
 </ion-content>
