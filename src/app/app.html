@@ -3,7 +3,7 @@
 <ion-menu [content]="nav">
 
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar color="danger" >
       <ion-title>Pokédex</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -13,7 +13,9 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+      <button ion-item menuClose detail-none>Close Menu</button>
     </ion-list>
+    
   </ion-content>
 
 </ion-menu>
