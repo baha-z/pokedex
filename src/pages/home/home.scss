@@ -7,3 +7,11 @@ page-home {
     margin: 0 auto;
     height: 150px;
 }
+
+.name{
+    text-align: center;
+}
+
+.name:first-letter {
+    text-transform: uppercase;
+}

@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <h3>Search Pokemon by Name</h3>
+  <h3>Search Pokémon by Name or ID</h3>
 
   <ion-grid>
     <ion-row>
@@ -17,7 +17,10 @@
         <ion-searchbar
           [(ngModel)]="myInput"
           [showCancelButton]="shouldShowCancel"
-          (ionInput)="searchPokemon($event)">
+          (ionInput)="searchPokemon($event)"
+          placeholder="Pokémon name"
+          debounce=500
+          autocomplete="on">
         </ion-searchbar>
       </ion-col>
     </ion-row>
@@ -25,32 +28,38 @@
 
   
   <ion-grid>
-    <ion-row *ngFor="let pokemon of pokemons">
-      <ion-col col-12>
-          <img class="profile" src= '{{pokemon.sprites.front_default}}' alt="">
-      </ion-col>
-      <ion-col>
-         <p>Name</p>
-         {{ pokemon.name }}
-      </ion-col>
-      <ion-col>
-        <p>Type</p>
-        {{ pokemon.types[0].type.name }}
-     </ion-col>
-     <ion-col>
-        <p>Height</p>
-        {{ pokemon.height }}
-     </ion-col>
-     <ion-col>
-        <p>Weight</p>
-        {{ pokemon.weight }}
-     </ion-col>
-    </ion-row>
-      
+      <div *ngIf="pokemons.length > 0; else loading">
+        <ion-row *ngFor="let pokemon of pokemons">
+            <ion-col col-12 class="name">
+                <h4>{{ pokemon.name }}</h4>
+                <p>N° {{ pokemon.id > 10 ? pokemon.id : '0' + pokemon.id}}</p>
+              <img class="profile" src= '{{pokemon.sprites.front_default}}' alt="">
+            </ion-col>
+            <ion-col>
+              <h4>Type</h4>
+              {{ pokemon.types[0].type.name }}
+            </ion-col>
+            <ion-col>
+              <h4>Height</h4>
+              {{ pokemon.height }}
+            </ion-col>
+            <ion-col>
+              <h4>Weight</h4>
+              {{ pokemon.weight }}
+            </ion-col>
+        </ion-row>
+      </div>
+
+  <ng-template #loading>Insert Pokémon name or ID</ng-template>
+
   </ion-grid>
 
   <p>
     <button ion-button color="primary" menuToggle>Menu</button>
+    <button ion-button color="secondary" icon-left (click)='RandomPokemon();' >
+        <ion-icon name="md-sync"></ion-icon>
+        Random Pokémon
+    </button>    
   </p>
 
 </ion-content>
