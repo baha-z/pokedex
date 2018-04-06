@@ -32,15 +32,15 @@
   <ion-grid>
       <div *ngIf="pokemons.length > 0; else loading">
         <ion-row *ngFor="let pokemon of pokemons">
-            <ion-col col-12 class="name">
+
+            <ion-col col-12 class="pokemon-name">
                 <h4>{{ pokemon.name }}</h4>
                 <p>N° {{ pokemon.id > 10 ? pokemon.id : '0' + pokemon.id}}</p>
               <img class="profile" src= '{{pokemon.sprites.front_default}}' alt="">
-              <button ion-button icon-left (click)='' >
-                  <ion-icon name="heart"></ion-icon>
-                  Add to Favorites
-              </button>     
+              <ion-icon name="md-heart-outline" (click)='addFavorite();'></ion-icon>
+      
             </ion-col>
+            
             <ion-col>
               <h4>Type</h4>
               {{ pokemon.types[0].type.name }}
@@ -62,7 +62,7 @@
 
   <p>
     <button ion-button color="primary" menuToggle>Menu</button>
-    <button ion-button color="secondary" icon-left (click)='RandomPokemon();' >
+    <button ion-button color="secondary" icon-left (click)='randomPokemon();' >
         <ion-icon name="md-sync"></ion-icon>
         Random Pokémon
     </button>    

@@ -6,13 +6,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { FavoritesPage } from '../pages/favorites/favorites';
 import { HttpClientModule } from '@angular/common/http';
 import { PokeapiProvider } from '../providers/pokeapi/pokeapi';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    FavoritesPage
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { PokeapiProvider } from '../providers/pokeapi/pokeapi';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    FavoritesPage
   ],
   providers: [
     StatusBar,

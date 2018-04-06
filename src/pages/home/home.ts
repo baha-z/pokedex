@@ -29,9 +29,14 @@ export class HomePage {
     )
   }
 
-  RandomPokemon(){
+  randomPokemon(){
     const random = Math.floor((Math.random() * 150) + 1);
     this.getPokemons(random);
+  }
+
+  addFavorite(pokemon){
+    
+    console.log(this);
   }
 
   searchPokemon(ev: any){
