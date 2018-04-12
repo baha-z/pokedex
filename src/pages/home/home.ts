@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { PokeapiProvider } from '../../providers/pokeapi/pokeapi';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -13,7 +14,7 @@ export class HomePage {
   searchQuery: string = '';
   pokemons: any = [];
 
-  constructor(public navCtrl: NavController, public pokeprovider: PokeapiProvider) {
+  constructor(public navCtrl: NavController, public pokeprovider: PokeapiProvider, private storage: Storage) {
   }
 
   getPokemons(val){
@@ -35,8 +36,11 @@ export class HomePage {
   }
 
   addFavorite(pokemon){
-    
-    console.log(this);
+    console.log(pokemon); 
+    this.storage.set(pokemon.id, pokemon).then((successData)=>{
+      console.log("Data Stored");
+      console.log(successData);
+    });
   }
 
   searchPokemon(ev: any){
