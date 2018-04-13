@@ -18,12 +18,14 @@ export class HomePage {
   }
 
   getPokemons(val){
-    this.pokeprovider.getPokemon(val)
+    let searchval = val.toLowerCase();
+
+    this.pokeprovider.getPokemon(searchval)
     .subscribe(
       (data) => { // Success
         this.pokemons =  [data];
         this.storage.forEach((key)=>{
-          if (key.name == val || key.id == val){
+          if (key.name == searchval || key.id == searchval){
             this.checkFavorite();
           } 
         })
@@ -49,7 +51,7 @@ export class HomePage {
   }
 
   randomPokemon(){
-    const random = Math.floor((Math.random() * 150) + 1);
+    let random = Math.floor((Math.random() * 150) + 1).toString();
     this.getPokemons(random);
   }
 
