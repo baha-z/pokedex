@@ -18,7 +18,7 @@
   <ion-grid>
     <div *ngIf="favorites.length > 0; else loading">
       <ion-row>
-          <ion-col class="favorite" *ngFor="let pokemon of favorites">
+          <ion-col col-4 class="favorite" *ngFor="let pokemon of favorites">
             <p>N° {{ pokemon.id > 10 ? pokemon.id : '0' + pokemon.id}} {{ pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }}</p>
             <img class="profile" src= '{{pokemon.sprites.front_default}}' alt="">
             <ion-icon name="md-trash" (click)='removeFavorite(pokemon);'></ion-icon>    

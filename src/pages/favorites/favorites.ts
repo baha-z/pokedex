@@ -24,7 +24,6 @@ export class FavoritesPage {
   ionViewDidLoad() {
     this.storage.forEach((key)=>{
       this.favorites.push(key);
-      console.log(key);
     })
   }
 

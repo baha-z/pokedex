@@ -13,21 +13,39 @@ export class HomePage {
 
   searchQuery: string = '';
   pokemons: any = [];
-
+  
   constructor(public navCtrl: NavController, public pokeprovider: PokeapiProvider, private storage: Storage) {
   }
 
   getPokemons(val){
     this.pokeprovider.getPokemon(val)
     .subscribe(
-      (data) => { // Success        
+      (data) => { // Success
         this.pokemons =  [data];
-        console.log(this.pokemons)
+        this.storage.forEach((key)=>{
+          if (key.name == val || key.id == val){
+            this.checkFavorite();
+          } 
+        })
       },
       (error) =>{
         console.error(error);
       }
     )
+  }
+
+  checkFavorite(){
+    let heart = document.querySelector('.heart');
+
+    if (heart.classList.contains('selected')){
+      //if already haves clase selected and you click, removes class and deletes favorite from storage
+      heart.classList.remove('selected')
+      this.storage.remove(this.pokemons[0].id);
+      console.log(this.pokemons[0].id);
+    }
+    else{
+      heart.classList.add('selected');
+    }
   }
 
   randomPokemon(){
@@ -36,10 +54,9 @@ export class HomePage {
   }
 
   addFavorite(pokemon){
-    console.log(pokemon); 
     this.storage.set(pokemon.id, pokemon).then((successData)=>{
       console.log("Data Stored");
-      console.log(successData);
+      this.checkFavorite();
     });
   }
 
