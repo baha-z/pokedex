@@ -28,4 +28,14 @@ export class FavoritesPage {
     })
   }
 
+  removeFavorite(pokemon){
+    this.storage.remove(pokemon.id);
+
+    let index = this.favorites.findIndex((favs)=>{
+      return favs.id == pokemon.id
+    })
+
+    this.favorites.splice(index,1);
+  }
+
 }
