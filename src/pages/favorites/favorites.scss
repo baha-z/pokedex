@@ -3,12 +3,13 @@ page-favorites {
 }
 
 .favorite {
-    margin-right: .5%;
     border-style: inset;
     border-width: medium;
     border-radius: 5px;
+    text-align: center;
 }
 
 .profile {
+    object-fit: cover;
     height: 70px;
 }

@@ -24,11 +24,14 @@ export class HomePage {
     .subscribe(
       (data) => { // Success
         this.pokemons =  [data];
+        console.log(this.pokemons);
+        
         this.storage.forEach((key)=>{
           if (key.name == searchval || key.id == searchval){
             this.checkFavorite();
           } 
         })
+        
       },
       (error) =>{
         console.error(error);
