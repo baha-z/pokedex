@@ -59,13 +59,13 @@ export class HomePage {
     if (heart.classList.contains('selected')){
       //if already haves clase selected and you click, removes class and deletes favorite from storage
       heart.classList.remove('selected')
-      favText.textContent = "Add to Favorites"
+      favText.textContent = "Add to Favorites";
       this.storage.remove(this.pokemons[0].id.toString());
  
     }
     else{
       heart.classList.add('selected');
-      favText.textContent = "Remove from favorites"      
+      favText.textContent = "Remove from favorites";      
     }
   }
 

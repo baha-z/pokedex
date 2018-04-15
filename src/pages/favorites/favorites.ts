@@ -31,7 +31,7 @@ export class FavoritesPage {
     this.storage.remove(pokemon.id.toString());
 
     let index = this.favorites.findIndex((favs)=>{
-      return favs.id == pokemon.id
+      return favs.id == pokemon.id;
     })
 
     this.favorites.splice(index,1);
