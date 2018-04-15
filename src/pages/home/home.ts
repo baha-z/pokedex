@@ -18,6 +18,7 @@ export class HomePage {
   }
 
   getPokemons(val){
+
     let searchval = val.toLowerCase();
 
     this.pokeprovider.getPokemon(searchval)
@@ -68,7 +69,7 @@ export class HomePage {
   searchPokemon(ev: any){
       // set val to the value of the searchbar
       let val = ev.target.value;
-      if (val != ''){
+      if (val != '' && typeof val != 'undefined'){
         this.getPokemons(val);
       }
   }

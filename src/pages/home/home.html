@@ -18,7 +18,7 @@
       <ion-col>
         <ion-searchbar
           [(ngModel)]="myInput"
-          [showCancelButton]="shouldShowCancel"
+          [animated]="true"
           (ionInput)="searchPokemon($event)"
           placeholder="Pokémon name"
           debounce=500
