@@ -10,14 +10,14 @@ Please use it only for non-commercial purposes
 You need the latest version of ionic installed 
 Installation steps in [here](https://ionicframework.com/getting-started)
 
-###Running the Project
+### Running the Project
 
 Download this project and open your terminal in the project directory, then run
 
-` $ npm install
+`$ npm install`
 
 To install dependencies, then just start your local server 
 
-` $ ionic serve
+`$ ionic serve`
 
 
