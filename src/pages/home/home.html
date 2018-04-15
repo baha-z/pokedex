@@ -21,7 +21,7 @@
           [animated]="true"
           (ionInput)="searchPokemon($event)"
           placeholder="Pokémon name"
-          debounce=500
+          debounce=1000
           autocomplete="on">
         </ion-searchbar>
       </ion-col>
@@ -29,7 +29,8 @@
   </ion-grid>
 
   
-  <ion-grid>
+  <ion-grid >
+
       <div *ngIf="pokemons.length > 0; else loading">
         <ion-row *ngFor="let pokemon of pokemons">
 
@@ -57,7 +58,7 @@
         </ion-row>
       </div>
 
-  <ng-template #loading>Insert Pokémon name or ID</ng-template>
+      <ng-template #loading>Insert Pokémon name or ID</ng-template>
 
   </ion-grid>
 

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { PokeapiProvider } from '../../providers/pokeapi/pokeapi';
 import { Storage } from '@ionic/storage';
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -14,7 +16,7 @@ export class HomePage {
   searchQuery: string = '';
   pokemons: any = [];
   
-  constructor(public navCtrl: NavController, public pokeprovider: PokeapiProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public pokeprovider: PokeapiProvider, private storage: Storage, public alertCtrl: AlertController) {
   }
 
   getPokemons(val){
@@ -23,7 +25,7 @@ export class HomePage {
 
     this.pokeprovider.getPokemon(searchval)
     .subscribe(
-      (data) => { // Success
+      (data) => { // Success        
         this.pokemons =  [data];
         console.log(this.pokemons);
         
@@ -32,10 +34,15 @@ export class HomePage {
             this.checkFavorite();
           } 
         })
-        
       },
       (error) =>{
         console.error(error);
+        let alert = this.alertCtrl.create({
+          title: 'Oh noes!',
+          subTitle:  'Pokémon ' + '"'+val+'"' + ' ' + error.error.detail,
+          buttons: ['OK']
+        });
+        alert.present();
       }
     )
   }
