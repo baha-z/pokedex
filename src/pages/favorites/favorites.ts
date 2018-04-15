@@ -28,7 +28,7 @@ export class FavoritesPage {
   }
 
   removeFavorite(pokemon){
-    this.storage.remove(pokemon.id);
+    this.storage.remove(pokemon.id.toString());
 
     let index = this.favorites.findIndex((favs)=>{
       return favs.id == pokemon.id
